@@ -3,7 +3,8 @@ from PyQt5.QtGui import *
 from PyQt5 import QtGui, QtCore
 import sys
 import cv2
-import testLabel
+
+from HandwritingRecognizer import HandwritingRecognizer
 
 import os
 
@@ -32,7 +33,7 @@ class Window(QWidget):
 
         # Initialize model
 
-        self.test = testLabel.TestClass()
+        self.recognizer = HandwritingRecognizer()
         self.setImage(self.shownImage)
         self.initialize()
 
@@ -74,7 +75,7 @@ class Window(QWidget):
 
     def readImageFun(self):
         if self.imageUri != "":
-            self.test.readImage(self.imageUri, self)
+            self.recognizer.readImage(self.imageUri, self)
 
     def saveImageFun(self):
         if self.imageUri != "":
